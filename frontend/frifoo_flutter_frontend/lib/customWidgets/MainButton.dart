@@ -16,7 +16,7 @@ class MainButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(15.0),
         gradient: LinearGradient(
             begin: Alignment.bottomLeft,
-            end: Alignment(0.8, 1),
+            end: Alignment.topRight,
             colors: <Color>[
               Color(0xff55A38F),
               Color(0xff47D65E),

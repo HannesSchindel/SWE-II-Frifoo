@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/MainButton.dart';
+import 'package:frifoo_flutter_frontend/customWidgets/MainFloatingButton.dart';
 
 void main() {
   runApp(const MyApp());
@@ -114,10 +115,9 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: MainFloatingButton(
+        icon: const Icon(Icons.add),
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
