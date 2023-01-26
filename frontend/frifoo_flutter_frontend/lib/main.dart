@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frifoo_flutter_frontend/customWidgets/ImageBox.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/MainButton.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/MainFloatingButton.dart';
 
@@ -111,6 +112,15 @@ class _MyHomePageState extends State<MyHomePage> {
             MainButton(
               inputText:'Add Another One',
               onPressed: _incrementCounter,
+            ),
+            Text(
+              'Favorites',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            ImageBox(
+              height: 300,
+              width: 200,
+              imageSource: 'https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             ),
           ],
         ),

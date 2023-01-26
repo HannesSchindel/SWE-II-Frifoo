@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frifoo_flutter_frontend/constants.dart';
 
 class MainFloatingButton extends StatelessWidget {
   final Icon icon;
@@ -13,7 +14,7 @@ class MainFloatingButton extends StatelessWidget {
         onPressed: onPressed,
         tooltip: '',
         child: icon,
-        backgroundColor: Color(0xff47D65E),
+        backgroundColor: LIGHT_GREEN,
        ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frifoo_flutter_frontend/constants.dart';
 
 class MainButton extends StatelessWidget {
   final String inputText;
@@ -9,7 +10,7 @@ class MainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width / 1.4,
+      width: MediaQuery.of(context).size.width / WIDTH_DIVIDER,
       height: 50,
       margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
       decoration: BoxDecoration(
@@ -18,8 +19,8 @@ class MainButton extends StatelessWidget {
             begin: Alignment.bottomLeft,
             end: Alignment.topRight,
             colors: <Color>[
-              Color(0xff55A38F),
-              Color(0xff47D65E),
+              DARK_GREEN,
+              LIGHT_GREEN,
             ],
           ),
           boxShadow: [
