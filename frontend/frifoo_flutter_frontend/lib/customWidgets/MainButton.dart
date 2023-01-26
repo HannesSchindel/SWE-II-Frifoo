@@ -5,7 +5,7 @@ class MainButton extends StatelessWidget {
   final String inputText;
   final onPressed;
 
-  const MainButton({required this.inputText, required this.onPressed});
+  const MainButton({required this.inputText, this.onPressed});
 
   @override
   Widget build(BuildContext context) {

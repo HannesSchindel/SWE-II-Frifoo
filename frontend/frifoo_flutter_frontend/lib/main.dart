@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/ImageBox.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/MainButton.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/MainFloatingButton.dart';
+import 'package:frifoo_flutter_frontend/pages/navpages/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MainPage() //const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
