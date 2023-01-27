@@ -9,10 +9,7 @@ class HomePage extends StatelessWidget {
     return Container(
       child: Center(
         child: Column(
-          children: [
-            Text("Home"),
-            MainButton(inputText: "Hi")
-          ],
+          children: [Text("Home"), MainButton(inputText: "Hi")],
         ),
       ),
     );
