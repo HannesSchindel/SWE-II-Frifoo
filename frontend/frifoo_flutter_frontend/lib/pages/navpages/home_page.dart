@@ -1,4 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:frifoo_flutter_frontend/constants.dart';
+import 'package:frifoo_flutter_frontend/customWidgets/CircleHeader.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/ImageBox.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/MainButton.dart';
 
@@ -8,19 +12,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Column(
+        child: ListView(
           children: [
-            Text("Home"),
-            MainButton(inputText: "Hi"),
-            ImageBox(
-              height: 300,
-              width: 400,
-              imageSource: 'https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            ),
+            CircleHeader(),
+            Container(
+              margin: const EdgeInsets.all(MAIN_CONTAINER_MARGIN),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Featured', style: FONT_FIRST_HEADING),
+                  Text('Hallo Hallo Wie Geht es dir?', style: FONT_PARAGRAPH)
+                ],
+              ),
+            )
           ],
         ),
-      ),
     );
   }
 }
