@@ -16,12 +16,12 @@ class HomePage extends StatelessWidget {
           children: [
             CircleHeader(),
             Container(
-              margin: const EdgeInsets.all(MAIN_CONTAINER_MARGIN),
+              margin: const EdgeInsets.only(left: MAIN_CONTAINER_MARGIN, right: MAIN_CONTAINER_MARGIN, bottom: MAIN_CONTAINER_MARGIN),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Featured', style: FONT_FIRST_HEADING),
-                  Text('Hallo Hallo Wie Geht es dir?', style: FONT_PARAGRAPH),
+                  Text('Check out these featured Recipes', style: FONT_PARAGRAPH),
                   Container(
                     height: 200,
                     child: ListView.builder(
@@ -34,9 +34,11 @@ class HomePage extends StatelessWidget {
                           width: 150,
                           child: Center(
                             child: ImageBox(
+                              title: "Rezept $index",
                               height: 200,
                               width: 150,
-                              imageSource: 'https://images.pexels.com/photos/2664443/pexels-photo-2664443.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',)
+                              isFavorite: false,
+                              imageSource: 'https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',)
                           ),
                         );
                       },
@@ -46,12 +48,12 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.all(MAIN_CONTAINER_MARGIN),
+              margin: const EdgeInsets.only(left: MAIN_CONTAINER_MARGIN, right: MAIN_CONTAINER_MARGIN, bottom: MAIN_CONTAINER_MARGIN),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Favorites', style: FONT_FIRST_HEADING),
-                  Text('Hallo Hallo Wie Geht es dir?', style: FONT_PARAGRAPH),
+                  Text('Some of your favorite Recipes', style: FONT_PARAGRAPH),
                   Container(
                     height: 200,
                     child: ListView.builder(
@@ -64,8 +66,10 @@ class HomePage extends StatelessWidget {
                           width: 150,
                           child: Center(
                             child: ImageBox(
+                              title: "Favorit $index",
                               height: 200,
                               width: 150,
+                              isFavorite: true,
                               imageSource: 'https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',)
                           ),
                         );
