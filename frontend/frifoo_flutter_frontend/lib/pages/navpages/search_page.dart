@@ -41,7 +41,7 @@ class _SearchPageState extends State<SearchPage> {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ResultsPage()));
               },
-              inputText: "Find Recepies"),
+              inputText: "Find Recipes"),
           Text("My Ingredients", style: FONT_FIRST_HEADING),
           Expanded(
             child: GridView.count(
