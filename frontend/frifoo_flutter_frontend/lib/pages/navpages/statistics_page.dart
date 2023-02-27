@@ -7,20 +7,22 @@ class StatisticsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: ListView(
-          children: [
-            Container(
-              margin: const EdgeInsets.all(MAIN_CONTAINER_MARGIN),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Statistics', style: FONT_LOGO_BLACK_HEADING),
-                  Text('Fick Mütter ich bin raus keine Lust mehr!', style: FONT_PARAGRAPH)
-                ],
-              ),
-            )
-          ],
-        ),
+      child: ListView(
+        children: [
+          Container(
+            margin: const EdgeInsets.all(MAIN_CONTAINER_MARGIN),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Statistics', style: FONT_LOGO_BLACK_HEADING),
+                Text(
+                    'Here you have an overview of the nutritional values ​​and calories of the last dishes.',
+                    style: FONT_PARAGRAPH)
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
