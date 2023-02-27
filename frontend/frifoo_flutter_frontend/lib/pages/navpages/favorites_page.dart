@@ -14,22 +14,89 @@ class FavoritesPage extends StatefulWidget {
 
 class _FavoritesPageState extends State<FavoritesPage> {
   List<bool> _isFavoriteList = List.generate(20, (index) => false);
+  bool _showFilter = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 15.0, left: 16.0),
-            child: Text(
-              "FAVORITES",
-              style: FONT_FIRST_HEADING.copyWith(fontSize: 24.0),
-              textAlign: TextAlign.left,
-            ),
+        padding: const EdgeInsets.only(top: 15.0, left: 16.0, right: 16.0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "FAVORITES",
+                style: FONT_FIRST_HEADING.copyWith(fontSize: 24.0),
+                textAlign: TextAlign.left,
+              ),
+              // Text(
+              //   "Some of your favorite recipes.",
+              //   style: FONT_FIRST_HEADING.copyWith(fontSize: 16.0),
+              //   textAlign: TextAlign.left,
+              // ),
+
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _showFilter = !_showFilter;
+                  });
+                },
+                // InkWell(
+                //   onTap: () {
+                //     setState(() {
+                //       _showFilter = !_showFilter;
+                //     });
+                // },
+                child: Row(
+                  children: [
+                    Icon(Icons.filter_list),
+                    SizedBox(width: 5),
+                    Text(
+                      "Filter",
+                      style: FONT_FIRST_HEADING.copyWith(fontSize: 16.0),
+                      textAlign: TextAlign.left,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
+          SizedBox(height: 10),
+          if (_showFilter)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Filtermöglichkeiten",
+                  style: FONT_FIRST_HEADING.copyWith(fontSize: 16.0),
+                  textAlign: TextAlign.left,
+                ),
+                Text(
+                  "Filter 1",
+                ),
+                SizedBox(height: 10),
+              ],
+            ),
+          Text(
+            "Some of your favorite recipes.",
+            style: FONT_FIRST_HEADING.copyWith(fontSize: 16.0),
+            textAlign: TextAlign.left,
+          ),
+          SizedBox(height: 10),
+          // Text(
+          //   "FAVORITES",
+          //   style: FONT_FIRST_HEADING.copyWith(fontSize: 24.0),
+          //   textAlign: TextAlign.left,
+          // ),
+          // SizedBox(height: 5),
+          // Text(
+          //   "Some of your favorite recipes.",
+          //   style: FONT_FIRST_HEADING.copyWith(fontSize: 16.0),
+          //   textAlign: TextAlign.left,
+          // ),
           Expanded(
+              child: Padding(
+            padding: EdgeInsets.only(top: 40.0),
             child: GridView.count(
               padding: EdgeInsets.only(top: 50.0),
               crossAxisCount: 2,
@@ -95,51 +162,19 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 },
               ),
             ),
-          ),
-        ],
-      ),
-    );
+          ))
+        ]));
   }
 }
 
+class FilterPopup extends StatefulWidget {
+  @override
+  _FilterPopupState createState() => _FilterPopupState();
+}
 
-
-
-//     return Container(
-//       child: GridView.count(
-//         crossAxisCount: 2,
-//         childAspectRatio: 1.1, // Seitenverhältnis der Widgets bzw. Bilder
-//         children: List.generate(20, (index) {
-//           return Center(
-//             child: ImageBox(
-//               height: 200, // Höhe der Widgets bzw. Bilder
-//               width: 200, // Breite der Widgets bzw. Bilder
-//               imageSource:
-//                   'https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg',
-//             ),
-//           );
-//         }),
-//       ),
-//       // child: Center(
-//       //   child: Column( //
-//       //     crossAxisAlignment: CrossAxisAlignment.start, // Inhalt linksbündig
-//       //     children: [
-//       //       Padding(
-//       //         padding: const EdgeInsets.only(top: 15.0),
-//       //         child: Text(
-//       //           "FAVOURITES",
-//       //           style: FONT_FIRST_HEADING,
-//       //         ),
-//       //       ),
-//       //       // MainButton(inputText: "Beispieltext"),
-//       //       ImageBox(
-//       //         height: 300,
-//       //         width: 400,
-//       //         imageSource:
-//       //             'https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg',
-//       //       ),
-//       //     ],
-//       //   ),
-//     );
-//   }
-// }
+class _FilterPopupState extends State<FilterPopup> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
