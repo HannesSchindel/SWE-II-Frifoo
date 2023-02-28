@@ -1,15 +1,17 @@
 import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:frifoo_flutter_frontend/constants.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:intl/intl.dart';
 
 class ChartBox extends StatelessWidget {
+  final List<SalesData> _chartData = getChartData();
+  final TooltipBehavior _tooltipBehavior = TooltipBehavior(enable: true);
   final double _borderRadius = 30.0;
   final double width;
   final double height;
 
-  const ChartBox({required this.width, required this.height});
+  ChartBox({required this.width, required this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +31,43 @@ class ChartBox extends StatelessWidget {
           ],
         ),
         child: Scaffold(
-          body: SfCartesianChart(),
+          body: SfCartesianChart(
+            title: ChartTitle(text: 'Yearly sales analysis'),
+            legend: Legend(isVisible: true),
+            tooltipBehavior: _tooltipBehavior,
+            series: <ChartSeries>[
+              LineSeries<SalesData, double>(
+                  name: 'Sales',
+                  dataSource: _chartData,
+                  xValueMapper: (SalesData sales, _) => sales.year,
+                  yValueMapper: (SalesData sales, _) => sales.sales,
+                  dataLabelSettings: DataLabelSettings(isVisible: true),
+                  enableTooltip: true)
+            ],
+            primaryXAxis:
+                NumericAxis(edgeLabelPlacement: EdgeLabelPlacement.shift),
+            primaryYAxis: NumericAxis(
+                labelFormat: '{value}M',
+                numberFormat:
+                    NumberFormat.compactSimpleCurrency(decimalDigits: 0)),
+          ),
         ));
+  }
+
+  static List<SalesData> getChartData() {
+    final List<SalesData> chartData = [
+      SalesData(2017, 25),
+      SalesData(2018, 12),
+      SalesData(2019, 24),
+      SalesData(2020, 18),
+      SalesData(2021, 30)
+    ];
+    return chartData;
   }
 }
 
-/*
-
-   
-*/
+class SalesData {
+  SalesData(this.year, this.sales);
+  final double year;
+  final double sales;
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frifoo_flutter_frontend/constants.dart';
+import 'package:frifoo_flutter_frontend/customWidgets/ChartBox.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/ImageBox.dart';
 
 class StatisticsPage extends StatelessWidget {
@@ -22,7 +23,11 @@ class StatisticsPage extends StatelessWidget {
                 Text(
                     'Here you have an overview of all the nutritional values and calories of the last dishes.',
                     style: FONT_PARAGRAPH),
-                Container(),
+                Container(
+                    child: ChartBox(
+                  height: 300,
+                  width: 400,
+                )),
               ],
             ),
           ),
