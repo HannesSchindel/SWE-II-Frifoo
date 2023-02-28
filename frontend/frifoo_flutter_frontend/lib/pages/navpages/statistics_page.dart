@@ -3,9 +3,14 @@ import 'package:frifoo_flutter_frontend/constants.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/ChartBox.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/ImageBox.dart';
 
-class StatisticsPage extends StatelessWidget {
+class StatisticsPage extends StatefulWidget {
   const StatisticsPage({super.key});
 
+  @override
+  State<StatisticsPage> createState() => _StatisticsPageState();
+}
+
+class _StatisticsPageState extends State<StatisticsPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
