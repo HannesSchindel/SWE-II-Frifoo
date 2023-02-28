@@ -11,7 +11,7 @@ class FavoritesPage extends StatefulWidget {
 }
 
 class _FavoritesPageState extends State<FavoritesPage> {
-  List<bool> _isFavoriteList = List.generate(20, (index) => false);
+  List<bool> _isFavoriteList = List.generate(20, (index) => true);
   bool _showFilter = false;
 
   @override
@@ -66,7 +66,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   textAlign: TextAlign.left,
                 ),
                 Text(
-                  "Beim Kauf der Pro-Version ist diese Funktion freigeschaltet.",
+                  "Beim Kauf der Pro-Version wird diese Funktion freigeschaltet.",
                   style: FONT_PARAGRAPH.copyWith(fontSize: 16.0),
                   textAlign: TextAlign.left,
                 ),
@@ -86,6 +86,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
               children: List.generate(
                 20, // Anzahl der angezeigten Bilder
                 (index) {
+                  if (!_isFavoriteList[index]) {
+                    return SizedBox.shrink();
+                  }
                   return Center(
                     child: Stack(
                       children: [
@@ -132,8 +135,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                                 // border:
                                 //     Border.all(color: Colors.red, width: 2.0),
                                 color: _isFavoriteList[index]
-                                    ? Colors.transparent
-                                    : Colors.white,
+                                    ? Colors.white
+                                    : Colors.transparent,
                               ),
                             ),
                           ),
