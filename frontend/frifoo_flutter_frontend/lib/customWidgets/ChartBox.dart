@@ -17,15 +17,14 @@ class ChartBox extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(_borderRadius),
         color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-              blurRadius: 10,
-              offset: Offset(4, 4),
-           ),
-         ],
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            blurRadius: 10,
+            offset: Offset(4, 4),
+          ),
+        ],
       ),
-      child:
     );
   }
 }
