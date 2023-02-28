@@ -1,5 +1,3 @@
-import 'dart:html';
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:frifoo_flutter_frontend/constants.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/ImageBox.dart';
@@ -21,39 +19,34 @@ class _FavoritesPageState extends State<FavoritesPage> {
     return Container(
         padding: const EdgeInsets.only(top: 15.0, left: 16.0, right: 16.0),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Text(
+            "FAVORITES",
+            style: FONT_FIRST_HEADING.copyWith(fontSize: 24.0),
+            textAlign: TextAlign.left,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "FAVORITES",
-                style: FONT_FIRST_HEADING.copyWith(fontSize: 24.0),
+                "All of your favorite recipes.",
+                style: FONT_SECOND_HEADING.copyWith(fontSize: 19.0),
                 textAlign: TextAlign.left,
               ),
-              // Text(
-              //   "Some of your favorite recipes.",
-              //   style: FONT_FIRST_HEADING.copyWith(fontSize: 16.0),
-              //   textAlign: TextAlign.left,
-              // ),
-
+              SizedBox(height: 1),
               GestureDetector(
                 onTap: () {
                   setState(() {
                     _showFilter = !_showFilter;
                   });
                 },
-                // InkWell(
-                //   onTap: () {
-                //     setState(() {
-                //       _showFilter = !_showFilter;
-                //     });
-                // },
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Icon(Icons.filter_list),
                     SizedBox(width: 5),
                     Text(
                       "Filter",
-                      style: FONT_FIRST_HEADING.copyWith(fontSize: 16.0),
+                      style: FONT_SECOND_HEADING.copyWith(fontSize: 16.0),
                       textAlign: TextAlign.left,
                     ),
                   ],
@@ -61,48 +54,37 @@ class _FavoritesPageState extends State<FavoritesPage> {
               ),
             ],
           ),
-          SizedBox(height: 10),
           if (_showFilter)
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 7),
                 Text(
-                  "Filtermöglichkeiten",
-                  style: FONT_FIRST_HEADING.copyWith(fontSize: 16.0),
+                  "Werbung",
+                  style: FONT_PARAGRAPH.copyWith(
+                      fontSize: 16.0, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.left,
                 ),
                 Text(
-                  "Filter 1",
+                  "Beim Kauf der Pro-Version ist diese Funktion freigeschaltet.",
+                  style: FONT_PARAGRAPH.copyWith(fontSize: 16.0),
+                  textAlign: TextAlign.left,
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 5),
               ],
             ),
-          Text(
-            "Some of your favorite recipes.",
-            style: FONT_FIRST_HEADING.copyWith(fontSize: 16.0),
-            textAlign: TextAlign.left,
-          ),
-          SizedBox(height: 10),
-          // Text(
-          //   "FAVORITES",
-          //   style: FONT_FIRST_HEADING.copyWith(fontSize: 24.0),
-          //   textAlign: TextAlign.left,
-          // ),
-          // SizedBox(height: 5),
-          // Text(
-          //   "Some of your favorite recipes.",
-          //   style: FONT_FIRST_HEADING.copyWith(fontSize: 16.0),
-          //   textAlign: TextAlign.left,
-          // ),
+          SizedBox(height: 5),
           Expanded(
               child: Padding(
-            padding: EdgeInsets.only(top: 40.0),
+            padding: EdgeInsets.only(
+                top: 8.0), // Abstand zwischen Filter und dem Beginn der Bilder
             child: GridView.count(
-              padding: EdgeInsets.only(top: 50.0),
+              padding: EdgeInsets.only(
+                  top: 5.0), // Abstand der Bilder zum "Scroll-Beginn"
               crossAxisCount: 2,
               childAspectRatio: 1.0,
               children: List.generate(
-                20,
+                20, // Anzahl der angezeigten Bilder
                 (index) {
                   return Center(
                     child: Stack(

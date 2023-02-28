@@ -17,5 +17,7 @@ final TextStyle FONT_LOGO_BLACK_HEADING = GoogleFonts.poppins(
     fontSize: 40, fontWeight: FontWeight.w700, color: Colors.black);
 final TextStyle FONT_FIRST_HEADING = GoogleFonts.poppins(
     fontSize: 22, fontWeight: FontWeight.w600, color: Colors.black);
+final TextStyle FONT_SECOND_HEADING = GoogleFonts.poppins(
+    fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black);
 final TextStyle FONT_PARAGRAPH = GoogleFonts.poppins(
     fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black);
