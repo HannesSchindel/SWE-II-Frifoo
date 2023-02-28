@@ -9,7 +9,12 @@ class ImageBox extends StatelessWidget {
   final String title;
   final bool isFavorite;
 
-  const ImageBox({required this.width, required this.height, required this.imageSource, required this.title, required this.isFavorite});
+  const ImageBox(
+      {required this.width,
+      required this.height,
+      required this.imageSource,
+      required this.title,
+      required this.isFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +25,13 @@ class ImageBox extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(_borderRadius),
         color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-              blurRadius: 10,
-              offset: Offset(4, 4),
-           ),
-         ],
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey,
+            blurRadius: 10,
+            offset: Offset(4, 4),
+          ),
+        ],
       ),
       child: Stack(
         children: [
@@ -34,9 +39,9 @@ class ImageBox extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(_borderRadius),
-              image: DecorationImage(image: NetworkImage(imageSource), fit: BoxFit.cover)
-            ),
+                borderRadius: BorderRadius.circular(_borderRadius),
+                image: DecorationImage(
+                    image: NetworkImage(imageSource), fit: BoxFit.cover)),
           ),
           Container(
             decoration: BoxDecoration(
@@ -47,32 +52,29 @@ class ImageBox extends StatelessWidget {
                 end: Alignment.bottomCenter,
                 colors: <Color>[
                   Color.fromARGB(0, 0, 0, 0),
-                Color.fromARGB(185, 0, 0, 0),
-              ],
+                  Color.fromARGB(185, 0, 0, 0),
+                ],
               ),
             ),
           ),
           Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  margin: EdgeInsets.all(15),
-                  child: Text(title, style: FONT_SECOND_WHITE_HEADING,),
-                ),
+            child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+              Container(
+                margin: const EdgeInsets.all(15),
+                child: DefaultTextStyle(
+                    style: FONT_SECOND_WHITE_HEADING, child: Text(title)),
+              ),
             ]),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  margin: EdgeInsets.all(15),
-                  child: icon(isFavorite),
-                )
-              ]
-              ),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+              Container(
+                margin: EdgeInsets.all(15),
+                child: icon(isFavorite),
+              )
+            ]),
           )
         ],
       ),
