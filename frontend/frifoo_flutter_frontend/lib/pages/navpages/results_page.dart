@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frifoo_flutter_frontend/constants.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/ImageBox.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/MainFloatingButton.dart';
+import 'package:frifoo_flutter_frontend/pages/recipe_page.dart';
 
 class ResultsPage extends StatefulWidget {
   const ResultsPage({super.key});
@@ -64,6 +65,12 @@ class _ResultsPageState extends State<ResultsPage> {
                           isFavorite: false,
                           imageSource:
                               'https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const RecipePage()));
+                          },
                         )
                       ],
                     ),

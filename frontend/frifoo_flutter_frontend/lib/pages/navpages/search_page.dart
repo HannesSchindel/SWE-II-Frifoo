@@ -23,17 +23,22 @@ class _SearchPageState extends State<SearchPage> {
           top: MAIN_CONTAINER_MARGIN),
       child: Stack(children: [
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Search", style: FONT_LOGO_BLACK_HEADING),
-            Row(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Icon(
-                  Icons.tune,
-                  color: Colors.black,
-                  size: 24.0,
+                Text("Search", style: FONT_LOGO_BLACK_HEADING),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.tune,
+                      color: Colors.black,
+                      size: 24.0,
+                    ),
+                    Text("Filter", style: FONT_SECOND_HEADING),
+                  ],
                 ),
-                Text("Filter", style: FONT_SECOND_HEADING),
               ],
             ),
             MainButton(
@@ -44,7 +49,11 @@ class _SearchPageState extends State<SearchPage> {
                           builder: (context) => const ResultsPage()));
                 },
                 inputText: "Find Recipes"),
-            Text("My Ingredients", style: FONT_FIRST_HEADING),
+            Row(
+              children: [
+                Text("My Ingredients", style: FONT_FIRST_HEADING),
+              ],
+            ),
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
