@@ -37,6 +37,7 @@ class _ChartBoxState extends State<ChartBox> {
         ],
       ),
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         body: SfCartesianChart(
           title: ChartTitle(text: 'Yearly sales analysis'),
           legend: Legend(isVisible: true),
