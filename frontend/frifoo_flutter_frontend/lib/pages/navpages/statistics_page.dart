@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frifoo_flutter_frontend/constants.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/ChartBox.dart';
+import 'package:frifoo_flutter_frontend/customWidgets/CircleChartBox.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/ImageBox.dart';
 
 class StatisticsPage extends StatefulWidget {
@@ -36,6 +37,24 @@ class _StatisticsPageState extends State<StatisticsPage> {
               ],
             ),
           ),
+          Container(
+            margin: const EdgeInsets.only(
+                left: MAIN_CONTAINER_MARGIN,
+                right: MAIN_CONTAINER_MARGIN,
+                bottom: MAIN_CONTAINER_MARGIN),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('nutritional values', style: FONT_PARAGRAPH),
+                Container(
+                  child: CircleChartBox(
+                    width: 300,
+                    height: 400,
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
