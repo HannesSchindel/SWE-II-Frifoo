@@ -47,12 +47,14 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
               ),
             ),
           ),
-          Positioned(
-              right: 500,
-              child:
-                  MainFloatingButton(icon: Icon(Icons.add), onPressed: () {})),
         ],
       ),
+      Positioned(
+          child: Align(
+        alignment: FractionalOffset.bottomRight,
+        child:
+            MainFloatingButton(icon: const Icon(Icons.add), onPressed: () {}),
+      )),
     );
   }
 }
