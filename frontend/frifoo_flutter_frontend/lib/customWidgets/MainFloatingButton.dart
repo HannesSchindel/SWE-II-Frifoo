@@ -15,7 +15,7 @@ class MainFloatingButton extends StatelessWidget {
         tooltip: '',
         child: icon,
         backgroundColor: LIGHT_GREEN,
-       ),
+      ),
     );
   }
 }
