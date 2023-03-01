@@ -1,4 +1,4 @@
-import 'dart:html';
+// import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:frifoo_flutter_frontend/constants.dart';
@@ -41,7 +41,7 @@ class _MainPageState extends State<MainPage> {
         onTap: onTap,
         currentIndex: currentIndex,
         selectedItemColor: DARK_GREEN,
-        unselectedItemColor: Colors.grey.withOpacity(0.5),
+        unselectedItemColor: Colors.grey.withOpacity(0.8),
         showSelectedLabels: false,
         showUnselectedLabels: false,
         // elevation: 0,

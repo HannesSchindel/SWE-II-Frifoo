@@ -6,8 +6,10 @@ class ImageBox extends StatelessWidget {
   final double width;
   final double height;
   final String imageSource;
+  final String title;
+  final bool isFavorite;
 
-  const ImageBox({required this.width, required this.height, required this.imageSource});
+  const ImageBox({required this.width, required this.height, required this.imageSource, required this.title, required this.isFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -44,17 +46,46 @@ class ImageBox extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: <Color>[
-                  Color.fromARGB(0, 255, 255, 255),
-                Color.fromARGB(71, 0, 0, 0),
+                  Color.fromARGB(0, 0, 0, 0),
+                Color.fromARGB(185, 0, 0, 0),
               ],
               ),
             ),
+          ),
+          Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  margin: EdgeInsets.all(15),
+                  child: Text(title, style: FONT_SECOND_WHITE_HEADING,),
+                ),
+            ]),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  margin: EdgeInsets.all(15),
+                  child: icon(isFavorite),
+                )
+              ]
+              ),
           )
         ],
       ),
     );
   }
 }
+
+Icon icon(bool isFavorite) {
+  if (isFavorite) {
+    return Icon(Icons.favorite_rounded, color: Colors.white);
+  }
+  return Icon(Icons.favorite_border_rounded, color: Colors.white);
+} 
 
 /*
 
