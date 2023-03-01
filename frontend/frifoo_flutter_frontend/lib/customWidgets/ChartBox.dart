@@ -41,14 +41,19 @@ class _ChartBoxState extends State<ChartBox> {
           title: ChartTitle(text: 'Yearly sales analysis'),
           legend: Legend(isVisible: true),
           tooltipBehavior: _tooltipBehavior,
-          series: <ChartSeries>[
-            LineSeries<SalesData, double>(
+          series: <SplineSeries>[
+            SplineSeries<SalesData, double>(
                 name: 'Sales',
                 dataSource: _chartData,
                 xValueMapper: (SalesData sales, _) => sales.year,
                 yValueMapper: (SalesData sales, _) => sales.sales,
                 dataLabelSettings: DataLabelSettings(isVisible: true),
-                enableTooltip: true)
+                enableTooltip: true,
+                color: Colors.green,
+                width: 3,
+                opacity: 1,
+                splineType: SplineType.cardinal,
+                cardinalSplineTension: 0.5)
           ],
           primaryXAxis:
               NumericAxis(edgeLabelPlacement: EdgeLabelPlacement.shift),
