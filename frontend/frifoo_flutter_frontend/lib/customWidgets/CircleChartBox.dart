@@ -16,11 +16,13 @@ class CircleChartBox extends StatefulWidget {
 
 class _CircleChartBoxState extends State<CircleChartBox> {
   late List<Data> _chartData;
+  late TooltipBehavior _tooltipBehavior;
   final double _borderRadius = 30.0;
 
   @override
   void initState() {
     _chartData = getChartData();
+    _tooltipBehavior = TooltipBehavior(enable: true);
     super.initState();
   }
 
@@ -44,10 +46,13 @@ class _CircleChartBoxState extends State<CircleChartBox> {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: SfCartesianChart(
+          body: SfCircularChart(
             title: ChartTitle(text: 'nutritional values'),
+            legend: Legend(
+                isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
+            tooltipBehavior: _tooltipBehavior,
             series: <CircularSeries>[
-              PieSeries<Data, String>(
+              DoughnutSeries<Data, String>(
                   dataSource: _chartData,
                   xValueMapper: (Data data, _) => data.nutrient,
                   yValueMapper: (Data data, _) => data.values,
