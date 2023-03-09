@@ -16,46 +16,52 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(MAIN_CONTAINER_MARGIN),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text("Shopping List", style: FONT_LOGO_BLACK_HEADING),
-          Expanded(
-            child: GridView.count(
-              padding: EdgeInsets.only(top: 50.0),
-              crossAxisCount: 2,
-              childAspectRatio: 1.0,
-              children: List.generate(
-                20,
-                (index) {
-                  return Center(
-                    child: Stack(
-                      children: [
-                        ImageBox(
-                          title: "Item $index",
-                          height: 200,
-                          width: 150,
-                          isFavorite: false,
-                          imageSource:
-                              'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Oranges_-_whole-halved-segment.jpg/1280px-Oranges_-_whole-halved-segment.jpg',
-                        )
-                      ],
+        margin: const EdgeInsets.only(
+            left: MAIN_CONTAINER_MARGIN,
+            right: MAIN_CONTAINER_MARGIN,
+            top: MAIN_CONTAINER_MARGIN),
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Shopping List", style: FONT_LOGO_BLACK_HEADING),
+                Expanded(
+                  child: GridView.count(
+                    padding: EdgeInsets.only(top: 50.0),
+                    crossAxisCount: 2,
+                    childAspectRatio: 1.0,
+                    children: List.generate(
+                      20,
+                      (index) {
+                        return Center(
+                          child: Stack(
+                            children: [
+                              ImageBox(
+                                title: "Item $index",
+                                height: 200,
+                                width: 150,
+                                isFavorite: false,
+                                imageSource:
+                                    'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Oranges_-_whole-halved-segment.jpg/1280px-Oranges_-_whole-halved-segment.jpg',
+                              )
+                            ],
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
-      Positioned(
-          child: Align(
-        alignment: FractionalOffset.bottomRight,
-        child:
-            MainFloatingButton(icon: const Icon(Icons.add), onPressed: () {}),
-      )),
-    );
+            Positioned(
+                child: Align(
+              alignment: FractionalOffset.bottomRight,
+              child: MainFloatingButton(
+                  icon: const Icon(Icons.add), onPressed: () {}),
+            )),
+          ],
+        ));
   }
 }
 
