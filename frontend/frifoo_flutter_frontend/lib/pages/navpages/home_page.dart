@@ -1,5 +1,3 @@
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:frifoo_flutter_frontend/constants.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/CircleHeader.dart';
@@ -18,7 +16,7 @@ class HomePage extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(
                 left: MAIN_CONTAINER_MARGIN,
-                right: MAIN_CONTAINER_MARGIN,
+                //right: MAIN_CONTAINER_MARGIN,
                 bottom: MAIN_CONTAINER_MARGIN),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +52,7 @@ class HomePage extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(
                 left: MAIN_CONTAINER_MARGIN,
-                right: MAIN_CONTAINER_MARGIN,
+                //right: MAIN_CONTAINER_MARGIN,
                 bottom: MAIN_CONTAINER_MARGIN),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
