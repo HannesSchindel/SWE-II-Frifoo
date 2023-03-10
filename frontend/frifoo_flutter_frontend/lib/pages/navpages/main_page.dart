@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:frifoo_flutter_frontend/constants.dart';
 import 'package:frifoo_flutter_frontend/pages/navpages/favorites_page.dart';
