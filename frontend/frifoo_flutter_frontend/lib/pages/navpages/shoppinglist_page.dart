@@ -58,10 +58,29 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
                 child: Align(
               alignment: FractionalOffset.bottomRight,
               child: MainFloatingButton(
-                  icon: const Icon(Icons.add), onPressed: () {}),
+                  icon: const Icon(Icons.add),
+                  onPressed: () {
+                    opendialog();
+                  }),
             )),
           ],
         ));
+  }
+
+  Future opendialog() => showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+            title: Text('Add Ingridient'),
+            // ignore: prefer_const_constructors
+            content: TextField(
+              autofocus: true,
+              decoration: const InputDecoration(hintText: 'e.g. potato'),
+            ),
+            actions: [TextButton(onPressed: submit, child: const Text('Add'))],
+          ));
+
+  void submit() {
+    Navigator.of(context).pop();
   }
 }
 
