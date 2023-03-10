@@ -118,11 +118,6 @@ class _MyHomePageState extends State<MyHomePage> {
               'Favorites',
               style: Theme.of(context).textTheme.headline4,
             ),
-            ImageBox(
-              height: 300,
-              width: 200,
-              imageSource: 'https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            ),
           ],
         ),
       ),

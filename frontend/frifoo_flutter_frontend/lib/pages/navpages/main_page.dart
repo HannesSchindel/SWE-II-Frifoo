@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:frifoo_flutter_frontend/constants.dart';
 import 'package:frifoo_flutter_frontend/pages/navpages/favorites_page.dart';
 import 'package:frifoo_flutter_frontend/pages/navpages/home_page.dart';
 import 'package:frifoo_flutter_frontend/pages/navpages/search_page.dart';
@@ -34,21 +35,22 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[0],
+      body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         onTap: onTap,
         currentIndex: currentIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey.withOpacity(0.5),
+        selectedItemColor: DARK_GREEN,
+        unselectedItemColor: Colors.grey.withOpacity(0.8),
         showSelectedLabels: false,
         showUnselectedLabels: false,
         // elevation: 0,
         items: [
-          BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home)),
-          BottomNavigationBarItem(label: "Favorites", icon: Icon(Icons.favorite)),
-          BottomNavigationBarItem(label: "Search", icon: Icon(Icons.search)),
-          BottomNavigationBarItem(label: "Statistics", icon: Icon(Icons.bar_chart)),
-          BottomNavigationBarItem(label: "Shopping List", icon: Icon(Icons.checklist)),
+          BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home_rounded)),
+          BottomNavigationBarItem(label: "Favorites", icon: Icon(Icons.favorite_rounded)),
+          BottomNavigationBarItem(label: "Search", icon: Icon(Icons.search_rounded)),
+          BottomNavigationBarItem(label: "Statistics", icon: Icon(Icons.bar_chart_rounded)),
+          BottomNavigationBarItem(label: "Shopping List", icon: Icon(Icons.checklist_rounded)),
         ]
       ),
     );
