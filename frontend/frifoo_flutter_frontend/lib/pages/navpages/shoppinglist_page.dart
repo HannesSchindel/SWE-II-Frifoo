@@ -25,7 +25,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Shopping List", style: FONT_LOGO_BLACK_HEADING),
+                Text("Shopping List", style: FONT_PAGE_HEADING),
                 Expanded(
                   child: GridView.count(
                     padding: EdgeInsets.only(top: 50.0),

@@ -3,7 +3,7 @@ import 'package:frifoo_flutter_frontend/constants.dart';
 
 class MainButton extends StatelessWidget {
   final String inputText;
-  final onPressed;
+  final void Function()? onPressed;
 
   const MainButton({required this.inputText, this.onPressed});
 
