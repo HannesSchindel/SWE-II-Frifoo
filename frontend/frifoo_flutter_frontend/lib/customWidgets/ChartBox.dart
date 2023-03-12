@@ -38,12 +38,12 @@ class _ChartBoxState extends State<ChartBox> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SfCartesianChart(
-          title: ChartTitle(text: 'Yearly sales analysis'),
+          title: ChartTitle(text: 'overview calories'),
           legend: Legend(isVisible: true),
           tooltipBehavior: _tooltipBehavior,
           series: <SplineSeries>[
             SplineSeries<SalesData, double>(
-                name: 'Sales',
+                name: 'calories',
                 dataSource: _chartData,
                 xValueMapper: (SalesData sales, _) => sales.year,
                 yValueMapper: (SalesData sales, _) => sales.sales,
@@ -58,7 +58,7 @@ class _ChartBoxState extends State<ChartBox> {
           primaryXAxis:
               NumericAxis(edgeLabelPlacement: EdgeLabelPlacement.shift),
           primaryYAxis: NumericAxis(
-              labelFormat: '{value}M',
+              labelFormat: '{value}kcal',
               numberFormat:
                   NumberFormat.compactSimpleCurrency(decimalDigits: 0)),
         ),
@@ -68,11 +68,13 @@ class _ChartBoxState extends State<ChartBox> {
 
   static List<SalesData> getChartData() {
     final List<SalesData> chartData = [
-      SalesData(2017, 25),
-      SalesData(2018, 12),
-      SalesData(2019, 24),
-      SalesData(2020, 18),
-      SalesData(2021, 30)
+      SalesData(1, 2500),
+      SalesData(2, 4000),
+      SalesData(3, 3000),
+      SalesData(4, 3500),
+      SalesData(5, 2000),
+      SalesData(6, 2300),
+      SalesData(7, 1900)
     ];
     return chartData;
   }
