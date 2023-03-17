@@ -33,7 +33,7 @@ class _CircleChartBoxState extends State<CircleChartBox> {
       margin: const EdgeInsets.only(top: 10.0, bottom: 10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(_borderRadius),
-        color: Colors.white,
+        color: Color.fromRGBO(255, 255, 255, 1),
         boxShadow: [
           BoxShadow(
             color: Colors.grey,

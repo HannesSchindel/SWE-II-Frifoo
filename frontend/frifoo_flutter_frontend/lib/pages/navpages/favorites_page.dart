@@ -20,8 +20,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
         padding: const EdgeInsets.only(top: MAIN_CONTAINER_MARGIN, left: MAIN_CONTAINER_MARGIN, right: MAIN_CONTAINER_MARGIN),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
-            "FAVORITES",
-            style: FONT_FIRST_HEADING.copyWith(fontSize: 24.0),
+            "Favorites",
+            style: FONT_PAGE_HEADING,
             textAlign: TextAlign.left,
           ),
           Column(
@@ -29,7 +29,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
             children: [
               Text(
                 "All of your favorite recipes.",
-                style: FONT_SECOND_HEADING.copyWith(fontSize: 19.0),
+                style: FONT_SECOND_HEADING,
                 textAlign: TextAlign.left,
               ),
               SizedBox(height: 1),
@@ -77,11 +77,11 @@ class _FavoritesPageState extends State<FavoritesPage> {
           Expanded(
             child: GridView.count(
               padding: EdgeInsets.only(
-                top: 5.0), // Abstand der Bilder zum "Scroll-Beginn"
+                top: 5.0),
               crossAxisCount: 2,
               childAspectRatio: 1.0,
               children: List.generate(
-                20, // Anzahl der angezeigten Bilder
+                20,
                 (index) {
                   return Center(
                     child: Container(

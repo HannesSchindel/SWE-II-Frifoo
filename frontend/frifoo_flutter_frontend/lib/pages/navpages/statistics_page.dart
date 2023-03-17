@@ -25,7 +25,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Statistics', style: FONT_FIRST_HEADING),
+                Text('Statistics', style: FONT_PAGE_HEADING),
                 Text(
                     'Here you have an overview of all the nutritional values and calories of the last dishes.',
                     style: FONT_PARAGRAPH),

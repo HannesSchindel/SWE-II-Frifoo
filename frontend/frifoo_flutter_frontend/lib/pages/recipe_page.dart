@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:frifoo_flutter_frontend/constants.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/ImageBox.dart';
 import 'package:frifoo_flutter_frontend/customWidgets/MainFloatingButton.dart';
+import 'package:frifoo_flutter_frontend/customWidgets/RecipeHeader.dart';
+
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class RecipePage extends StatefulWidget {
-  const RecipePage({super.key});
+  final Map<String, dynamic> recipeData;
+
+  RecipePage({super.key, required this.recipeData});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -12,91 +18,94 @@ class RecipePage extends StatefulWidget {
 }
 
 class _RecipePageState extends State<RecipePage> {
+
+  Future<String> getPreparationFromAPI() async {
+    print(widget.recipeData['recipe']['uri']);
+    http.Response response = await http.get(Uri.parse(widget.recipeData['recipe']['uri']));
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data;
+      data = jsonDecode(response.body);
+      
+      // print(data);
+      return 'yeaaah';
+    } else {
+      throw Exception('Failed to load data from API');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.all(MAIN_CONTAINER_MARGIN),
-        child: SingleChildScrollView(
-          //margin: const EdgeInsets.all(MAIN_CONTAINER_MARGIN),
-          child: Column(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return Scaffold(
+      body:
+        SingleChildScrollView(
+              //margin: const EdgeInsets.all(MAIN_CONTAINER_MARGIN),
+              child: Column(
                 children: [
-                  Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      MainFloatingButton(
-                          icon: const Icon(Icons.chevron_left),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          }),
-                      const SizedBox(width: 20),
+                      Stack(
+                        children: [
+                          RecipeHeader(imageurl: widget.recipeData['recipe']['image'], title: widget.recipeData['recipe']['label']),
+                          Padding(
+                            padding: EdgeInsets.only(left: 10, top: 40),
+                            child: MainFloatingButton(
+                              icon: const Icon(Icons.chevron_left),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              }
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: MAIN_CONTAINER_MARGIN, right: MAIN_CONTAINER_MARGIN, bottom: MAIN_CONTAINER_MARGIN),
+                    child: Column(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          DefaultTextStyle(
+                              style: FONT_FIRST_HEADING,
+                              child: const Text("Ingredients"))
+                        ],
+                      ),
+                      DataTable(
+                        columns: <DataColumn>[
+                          DataColumn(
+                            label: Text('Name', style: FONT_SECOND_HEADING,),
+                            tooltip: 'Name',
+                          ),
+                          DataColumn(
+                            label: Text('Quantity', style: FONT_SECOND_HEADING,),
+                            tooltip: 'Quantity',
+                          )
+                        ],
+                        rows: widget.recipeData['recipe']['ingredients'].map<DataRow>((ingredient) => DataRow(cells: [
+                          DataCell(Text(ingredient['food'].toString().toUpperCase(), style: FONT_PARAGRAPH)),
+                          DataCell(Text(ingredient['quantity'].toString(), style: FONT_PARAGRAPH)),
+                        ])).toList(),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          DefaultTextStyle(
+                              style: FONT_FIRST_HEADING,
+                              child: const Text("Preparation"))
+                        ],
+                      ),
                       DefaultTextStyle(
-                          style: FONT_LOGO_BLACK_HEADING,
-                          child: Text("Recipe name",
-                              style: FONT_LOGO_BLACK_HEADING)),
+                          style: FONT_PARAGRAPH,
+                          child: Text('BESCHREIBUNG HIER'),
+                      ),
                     ],
-                  ),
+                  ))
                 ],
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ImageBox(
-                      width: MediaQuery.of(context).size.width / WIDTH_DIVIDER,
-                      height: 400,
-                      imageSource:
-                          "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                      title: "",
-                      isFavorite: false),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  DefaultTextStyle(
-                      style: FONT_FIRST_HEADING,
-                      child: const Text("Ingredients"))
-                ],
-              ),
-              DataTable(
-                columns: const <DataColumn>[
-                  DataColumn(
-                    label: Text('Name'),
-                  ),
-                  DataColumn(
-                    label: Text('Menge'),
-                  ),
-                ],
-                rows: const <DataRow>[
-                  DataRow(
-                    cells: <DataCell>[
-                      DataCell(Text('tomate')),
-                      DataCell(Text('3')),
-                    ],
-                  ),
-                  DataRow(
-                    cells: <DataCell>[
-                      DataCell(Text('kartoffel')),
-                      DataCell(Text('5kg')),
-                    ],
-                  ),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  DefaultTextStyle(
-                      style: FONT_FIRST_HEADING,
-                      child: const Text("Description"))
-                ],
-              ),
-              DefaultTextStyle(
-                  style: FONT_PARAGRAPH,
-                  child: const Text(
-                      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue"))
-            ],
-          ),
-        ));
+            )
+    );
   }
 }
