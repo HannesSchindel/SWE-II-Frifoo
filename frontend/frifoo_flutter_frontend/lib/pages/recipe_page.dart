@@ -75,10 +75,6 @@ class _RecipePageState extends State<RecipePage> {
                       ),
                       DataTable(
                         columns: <DataColumn>[
-                          // DataColumn(
-                          //   label: Text('Description', style: FONT_SECOND_HEADING,),
-                          //   tooltip: 'Description',
-                          // ),
                           DataColumn(
                             label: Text('Name', style: FONT_SECOND_HEADING,),
                             tooltip: 'Name',
@@ -89,7 +85,6 @@ class _RecipePageState extends State<RecipePage> {
                           )
                         ],
                         rows: widget.recipeData['recipe']['ingredients'].map<DataRow>((ingredient) => DataRow(cells: [
-                        // DataCell(Text(ingredient['text'].toString(), style: FONT_PARAGRAPH,)),
                           DataCell(Text(ingredient['food'].toString().toUpperCase(), style: FONT_PARAGRAPH)),
                           DataCell(Text(ingredient['quantity'].toString(), style: FONT_PARAGRAPH)),
                         ])).toList(),

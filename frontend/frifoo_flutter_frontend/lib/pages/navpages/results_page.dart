@@ -49,38 +49,6 @@ class _ResultsPageState extends State<ResultsPage> {
                       child: Text("Filter", style: FONT_SECOND_HEADING)),
                 ],
               ),
-              // Expanded(
-              //   child: GridView.count(
-              //     // padding: const EdgeInsets.only(top: 50.0),
-              //     crossAxisCount: 2,
-              //     childAspectRatio: 0.9,
-              //     children: List.generate(
-              //       5,
-              //       (index) {
-              //         return Center(
-              //           child: Stack(
-              //             children: [
-              //               ImageBox(
-              //                 title: "Recipe $index",
-              //                 height: 175,
-              //                 width: 150,
-              //                 isFavorite: false,
-              //                 imageSource:
-              //                     'https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-              //                 onPressed: () {
-              //                   Navigator.push(
-              //                       context,
-              //                       MaterialPageRoute(
-              //                           builder: (context) => const RecipePage()));
-              //                 },
-              //               )
-              //             ],
-              //           ),
-              //         );
-              //       },
-              //     ),
-              //   ),
-              // ),
               RecipeGridView(database: widget.database)
             ],
           ),

@@ -96,8 +96,3 @@ Icon icon(bool isFavorite) {
   }
   return Icon(Icons.favorite_border_rounded, color: Colors.white);
 } 
-
-/*
-
-   
-*/

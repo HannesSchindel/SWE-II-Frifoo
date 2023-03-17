@@ -7,8 +7,9 @@ import 'dart:convert';
 
 class IngredientGridView extends StatefulWidget {
   final SqliteHelper database;
+  final String tableName;
 
-  IngredientGridView({required this.database});
+  IngredientGridView({required this.database, required this.tableName});
 
   @override
   _IngredientGridViewState createState() => _IngredientGridViewState();
@@ -19,7 +20,7 @@ class _IngredientGridViewState extends State<IngredientGridView> {
 
   Future<List<Map<dynamic, dynamic>>> getDataFromDatabase() async {
     List<Map<dynamic, dynamic>> data;
-    data = await widget.database.fetchAll();
+    data = await widget.database.fetchAll(widget.tableName);
     return data;
   }
 
@@ -48,6 +49,7 @@ class _IngredientGridViewState extends State<IngredientGridView> {
                         width: 150,
                         imageSource: snapshot.data!.elementAt(index)['imageurl'],
                         database: widget.database,
+                        tableName: widget.tableName,
                         id: snapshot.data!.elementAt(index)['id'],
                         onDelete: delete,
                         ),

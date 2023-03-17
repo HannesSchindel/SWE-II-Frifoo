@@ -20,7 +20,7 @@ class _RecipeGridView extends State<RecipeGridView> {
 
   Future<String> getRecipesFromDatabase() async {
     String recipesAsString;
-    recipesAsString = await widget.database.fetchTitles();
+    recipesAsString = await widget.database.fetchTitles('ingredients');
     return recipesAsString;
   }
 

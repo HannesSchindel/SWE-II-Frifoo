@@ -3,7 +3,8 @@ import 'package:sqflite/sqflite.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-const String tableName = 'ingredients';
+const String ingredientsTableName = 'ingredients';
+const String shoppingListTableName = 'shoppinglist';
 const String colId = 'id';
 const String colTitle = 'title';
 const String colImageUrl = 'imageurl';
@@ -11,12 +12,21 @@ const String colImageUrl = 'imageurl';
 class SqliteHelper{
   late Database _database;
 
+  //  SqliteHelper() {
+  //   databaseFactory.deleteDatabase('local_db.db');
+  //  }
+
   open() async{
     _database = await openDatabase(
       'local_db.db',
-      version: 1,
+      version: 2,
       onCreate: (Database db, int version) async{
-        await db.execute('CREATE TABLE $tableName ('
+        await db.execute('CREATE TABLE $ingredientsTableName ('
+          '$colId INTEGER PRIMARY KEY AUTOINCREMENT, '
+          '$colTitle TEXT NOT NULL, '
+          '$colImageUrl TEXT NOT NULL'
+        ');');
+        await db.execute('CREATE TABLE $shoppingListTableName ('
           '$colId INTEGER PRIMARY KEY AUTOINCREMENT, '
           '$colTitle TEXT NOT NULL, '
           '$colImageUrl TEXT NOT NULL'
@@ -26,7 +36,7 @@ class SqliteHelper{
   }
 
   // Insert a new row
-  Future<bool> insert(String givenTitle) async{
+  Future<bool> insert(String givenTitle, String tableName) async{
     String title = givenTitle;
     await open();
     Map<String, dynamic> data = await _getIngredient(title);
@@ -38,42 +48,42 @@ class SqliteHelper{
   }
 
   // Get all items from table
-  Future<List<Map>> fetchAll() async{
+  Future<List<Map>> fetchAll(String tableName) async{
     await open();
     List<Map> items = await _database.query(tableName);
     return items;
   }
 
   // Get all items from table by specific order
-  Future<List<Map>> fetchAllOrderedByID() async{
+  Future<List<Map>> fetchAllOrderedByID(String tableName) async{
     await open();
     List<Map> items = await _database.query(tableName, orderBy: '$colId desc');
     return items;
   }
 
   // Get ine specific item from table
-  Future<Map> fetchOne(int id) async{
+  Future<Map> fetchOne(int id, String tableName) async{
     open();
     List<Map> items = await _database.query(tableName, where: '$colId=?', whereArgs: [id]);
     return items.first;
   }
 
   // Update one specific item from table
-  Future<bool> update(int id, Map<String, dynamic> dataToUpdate) async{
+  Future<bool> update(int id, Map<String, dynamic> dataToUpdate, String tableName) async{
     await open();
     int rowsUpdated = await _database.update(tableName, dataToUpdate, where: '$colId=?', whereArgs: [id]);
     return rowsUpdated>0;
   }
 
   // Delete one specific item from table
-  Future<bool> delete(int id) async{
+  Future<bool> delete(int id, String tableName) async{
     await open();
     int rowsDeleted= await _database.delete(tableName, where:'$colId=?', whereArgs: [id]);
     return rowsDeleted==1;
   }
 
   // Delete all items from table
-  Future<bool> deleteAll() async{
+  Future<bool> deleteAll(String tableName) async{
     await open();
     int rowsDeleted= await _database.delete(tableName);
     return rowsDeleted>0;
@@ -93,7 +103,7 @@ class SqliteHelper{
       }
     }
 
-  Future<String> fetchTitles() async {
+  Future<String> fetchTitles(String tableName) async {
     await open();
     List<Map<String, dynamic>> maps = await _database.query(tableName, columns: ['title']);
     List<String> titles = List.generate(maps.length, (index) {

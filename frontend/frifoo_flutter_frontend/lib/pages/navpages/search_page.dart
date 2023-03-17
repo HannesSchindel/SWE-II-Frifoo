@@ -57,12 +57,12 @@ class _SearchPageState extends State<SearchPage> {
               children: [
                 Text("My Ingredients", style: FONT_FIRST_HEADING),
                 GestureDetector(
-                onTap: () async {await ingredientsDb.deleteAll(); setState(() {});},
+                onTap: () async {await ingredientsDb.deleteAll('ingredients'); setState(() {});},
                 child: Icon(Icons.delete),
               ),
               ],
             ),
-            IngredientGridView(database: ingredientsDb)
+            IngredientGridView(database: ingredientsDb, tableName: 'ingredients',)
           ],
         ),
         Positioned(
@@ -94,8 +94,7 @@ class _SearchPageState extends State<SearchPage> {
 
   void submit() async { 
     String title = _controller.text;
-    // Map<String, dynamic> ingredient = {'title':title, 'imageurl':'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Kartoffeln_Sorte_Nicola.jpg/220px-Kartoffeln_Sorte_Nicola.jpg'};
-    bool insertedItem = await ingredientsDb.insert(title);
+    bool insertedItem = await ingredientsDb.insert(title, 'ingredients');
       if (insertedItem) {
       print('Added new Ingredient');
       _printListAsString();
@@ -108,8 +107,8 @@ class _SearchPageState extends State<SearchPage> {
 
   // TESTING
   Future<void> _printListAsString() async {
-  List<Map<dynamic, dynamic>> list = await ingredientsDb.fetchAll(); // Hier rufen Sie Ihre Funktion auf und speichern das Ergebnis in der Liste
-  String formattedList = list.toString().replaceAll(", ", "\n"); // Ersetzen Sie alle ", " durch Zeilenumbrüche, um die Liste lesbarer zu machen
-  print(formattedList); // Hier geben Sie die Liste als String aus
+  List<Map<dynamic, dynamic>> list = await ingredientsDb.fetchAll('ingredients');
+  String formattedList = list.toString().replaceAll(", ", "\n");
+  print(formattedList);
 }
 }

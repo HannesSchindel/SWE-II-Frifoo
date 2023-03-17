@@ -77,11 +77,11 @@ class _FavoritesPageState extends State<FavoritesPage> {
           Expanded(
             child: GridView.count(
               padding: EdgeInsets.only(
-                top: 5.0), // Abstand der Bilder zum "Scroll-Beginn"
+                top: 5.0),
               crossAxisCount: 2,
               childAspectRatio: 1.0,
               children: List.generate(
-                20, // Anzahl der angezeigten Bilder
+                20,
                 (index) {
                   return Center(
                     child: Container(

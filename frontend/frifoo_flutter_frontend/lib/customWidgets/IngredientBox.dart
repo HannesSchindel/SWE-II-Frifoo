@@ -10,6 +10,7 @@ class IngredientBox extends StatefulWidget {
   final String imageSource;
   final String title;
   final SqliteHelper database;
+  final String tableName;
   final int id;
   final VoidCallback onDelete;
 
@@ -19,6 +20,7 @@ class IngredientBox extends StatefulWidget {
     required this.imageSource,
     required this.title,
     required this.database,
+    required this.tableName,
     required this.id,
     required this.onDelete,
   });
@@ -107,7 +109,7 @@ class _IngredientBoxState extends State<IngredientBox> {
   }
 
   void delete() async {
-    bool deletedItem = await widget.database.delete(widget.id);
+    bool deletedItem = await widget.database.delete(widget.id, widget.tableName);
     if (deletedItem) {
       print('Deleted $widget.id');
       setState(() {}); // Rebuild aufrufen
